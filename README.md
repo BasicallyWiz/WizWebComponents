@@ -5,7 +5,9 @@ This project can also be used as a good example of component design, and program
 This also shows code-behind and how to use that pretty well.
 
 ## What's with the empty wwwroot?
-I write this while working on another project, and usually when I add styles and assets to the folder, they usually just don't work at all. (I believe the story might be different after solution publish)
+I write this while working on another project, and usually when I add styles and assets to the folder, they usually just don't work at all.
+
+I'm fairly confident though, that when published, the wwwroot of this library and any parent projects should combine, then it'll work.
 
 ## How To Use
 ### I want the code (Preferred)
