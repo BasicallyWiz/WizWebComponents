@@ -24,9 +24,7 @@ namespace WizWebComponents.Services
 
     public async Task PopulateFromCookies(IJSRuntime JS)
     {
-      Console.WriteLine("Populating from cookies...");
       var cookies = await JS.InvokeAsync<string>(GetCookieMethod ?? "window.CookieAccessor.get");
-      Console.WriteLine(cookies);
 
       if (cookies.Contains(';'))
       {
