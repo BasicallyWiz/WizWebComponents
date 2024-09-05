@@ -15,11 +15,11 @@ namespace WizWebComponents.Services
     public string GetCookieMethod { get; set; }
     public string SetCookieMethod { get; set; }
 
-    public CookieList(IJSRuntime JS, string? GetCookiemethod, string? SetCookieMethod) : base()
+    public CookieList(IJSRuntime JS, string GetCookiemethod = "window.CookieAccessor.Get", string SetCookieMethod = "window.CookieAccessor.Set") : base()
     {
       this.JS = JS;
-      this.GetCookieMethod = GetCookiemethod ?? "window.CookieAccessor.Get";
-      this.SetCookieMethod = SetCookieMethod ?? "window.CookieAccessor.Set";
+      this.GetCookieMethod = GetCookiemethod;
+      this.SetCookieMethod = SetCookieMethod;
     }
 
     public async Task PopulateFromCookies(IJSRuntime JS)
@@ -70,6 +70,11 @@ namespace WizWebComponents.Services
     {
       _ = JS.InvokeVoidAsync(SetCookieMethod, cookie.ToCookieString());
       base.Add(cookie);
+    }
+    public new void Remove(Cookie cookie)
+    {
+      _ = JS.InvokeVoidAsync(SetCookieMethod, $"{cookie.Name}=; Expires=Thu, 01 Jan 1970 00:00:00 GMT");
+      base.Remove(cookie);
     }
   }
   public class Cookie
