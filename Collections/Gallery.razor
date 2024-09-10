@@ -1,6 +1,6 @@
 ﻿@using WizWebComponents.Layout
 
-<Card style="@galleryStyle">
+<Card style="@galleryStyle" @attributes="SplatStuff">
   @if (Uris?.Length > 0) {
     @foreach (var uri in Uris) {
       <img src="@(uri)" style="@itemStyle" />

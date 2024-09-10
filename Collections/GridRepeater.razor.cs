@@ -7,5 +7,6 @@ namespace WizWebComponents.Collections
     [Parameter] public int ItemsPerLine { get; set; } = 3;
     [Parameter] public bool IsVertical { get; set; } = true;
     [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? Splat { get; set; }
   }
 }
