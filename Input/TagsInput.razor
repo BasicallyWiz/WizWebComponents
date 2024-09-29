@@ -1,0 +1,25 @@
+﻿@inherits InputBase<List<string>>
+
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Web
+
+<div class="wiz-card button-color" style="background-color: var(--color-input-text); cursor: text; display: flex; flex-direction: row; width: min-content;" @ref="InputArea">
+  @foreach(string t in Value!)
+  {
+    <span class="wiz-button" style="height: 1rem; width: min-content; padding: .2rem; margin-right: .3rem; line-height: 1rem; border-radius: 4px; cursor: pointer; font-weight: bold;" contenteditable="false" @onclick="() => {Value.Remove(t); _= OnChanged();}">
+      @t
+    </span>
+  }
+  <span class="wiz-input" id="@InputId" @ref="NewTagInput" style="min-height: 1rem; min-width: 10rem; padding: .1rem; word-wrap: anywhere; line-height: 1rem; border-bottom: solid 1px var(--color-accent-one);" contenteditable="true" @onkeydown="Input_OnKeyDown">
+    
+  </span>
+</div>
+
+<!--
+  KNOWN ODDITY:
+
+  This component will not work when statically rendered.
+  This component cannot have a rendermode given to it.
+
+  This component must live in a page or component with an interactive render mode.
+-->
